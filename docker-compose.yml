@@ -1,0 +1,47 @@
+version: "3"
+
+services:
+  db:
+    image: mongo
+    restart: always
+    networks:
+      - back-end
+    ports:
+      - "27017:27017"
+  mongo-express:
+    image: mongo-express
+    restart: always
+    ports:
+      - 8081:8081
+    environment:
+      ME_CONFIG_MONGODB_URL: mongodb://db:27017/admin
+    networks:
+      - back-end
+  client-frontend:
+    build:
+      context: ./Client
+      dockerfile: Dockerfile
+    ports:
+      - "8080:4200"
+    networks:
+      - front-network
+    volumes:
+      - ./Client:/app
+  server-backend:
+    build:
+      context: ./Server
+      dockerfile: Dockerfile
+    ports:
+      - "3000:3000"
+    networks:
+      - front-network
+      - back-end
+    links:
+      - db
+
+
+
+networks:
+  back-end:
+  front-network:
+    driver: bridge

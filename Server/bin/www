@@ -1,0 +1,24 @@
+var app = require('../app');
+var http = require('http');
+var DateTime = require('luxon').DateTime;
+require('dotenv').config();
+
+// Constants
+const PORT = process.env.port;
+const HOST = process.env.host;
+
+app.set('port', PORT);
+
+var server = http.createServer(app);
+server.listen(PORT);
+
+server.on("listening", () => {
+    console.log("Todo Api Server started on " + DateTime.now().toFormat('MMMM Do YYYY, h:mm:ss a'));
+    console.log("Running at... %s:%s", server.address().address, server.address().port);
+});
+
+
+process.on('unhandledRejection', error => {
+    // Will print "unhandledRejection err is not defined"
+    console.log('unhandledRejection', error.message);
+});

@@ -1,0 +1,114 @@
+.completed  {
+  background-color: #f1f5f9 !important;
+  text-decoration: line-through !important;
+  filter: blur(1px) !important;
+}
+mat-table {
+  width: 100%;
+}
+.cdk-column-actions{
+  max-width: 200px;
+}
+.cdk-column-name{
+  max-width: 200px;
+}
+.cdk-column-expand{
+  max-width: 100px;
+}
+.cdk-header-cell {
+  &.cdk-column-actions{
+    text-align: right;
+    display: contents;
+  }
+}
+.mat-header-row{
+  &.cdk-header-row{
+    &.noshow{
+      max-height: 10px;
+      margin-top: -30px;
+    }
+  }
+}
+.cdk-column-add{
+  max-width: 100px;
+}
+// flash green
+.flash-green{
+  animation: flash-green 0.5s ease-in-out 2;
+}
+// animation flash green
+@keyframes flash-green{
+  0%{
+    background-color: #f1f5f9;
+  }
+  50%{
+    background-color: #dcedc8;
+  }
+  100%{
+    background-color: #f1f5f9;
+  }
+}
+
+// flash red
+.flash-red{
+  animation: flash-red 0.2s ease-in-out 10;
+}
+// animation flash red
+@keyframes flash-red{
+  0%{
+    background-color: #f1f5f9;
+  }
+  50%{
+    background-color: #ef9a9a;
+  }
+  100%{
+    background-color: #f1f5f9;
+  }
+}
+
+// flash yellow
+.flash-yellow{
+  animation: flash-yellow 0.5s ease-in-out 3;
+}
+// animation flash yellow
+@keyframes flash-yellow{
+  0%{
+    background-color: #f1f5f9;
+  }
+  50%{
+    background-color: #ffeb3b;
+  }
+  100%{
+    background-color: #f1f5f9;
+  }
+}
+
+
+
+
+.example-detail-row {
+  &.mat-row{
+    height: auto;
+    min-height: auto;
+    display: flex;
+    transition: all 0.2s ease-in-out;
+    & .mat-cell{
+      & div{
+        &.expanded{
+          height: auto;
+          min-height: auto;
+          overflow: auto;
+          opacity: 1;
+        }
+        &.collapsed{
+          height: 0%;
+          min-height: 0%;
+          overflow: auto;
+          opacity: 0;
+        }
+      }
+    }
+  }
+}
+
+

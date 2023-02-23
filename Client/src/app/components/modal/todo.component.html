@@ -1,0 +1,130 @@
+
+<ng-container *ngIf="dataReady && _mydata.selection == 'new'">
+  <ng-component *ngTemplateOutlet="new"></ng-component>
+</ng-container>
+<ng-container *ngIf="dataReady && _mydata.selection == 'edit'">
+  <ng-component *ngTemplateOutlet="edit"></ng-component>
+</ng-container>
+<ng-container *ngIf="dataReady && _mydata.selection == 'subtask-create'">
+  <ng-component *ngTemplateOutlet="new"></ng-component>
+</ng-container>
+<ng-container *ngIf="dataReady && _mydata.selection == 'subtask-edit'">
+  <ng-component *ngTemplateOutlet="edit"></ng-component>
+</ng-container>
+
+
+<ng-template #new>
+<div class="w-full" mat-dialog-title>
+  <div class="text-lg"> Add a {{_mydata.selection == 'subtask-create' ? 'Sub-Todo' : 'Todo'}}</div>
+  <div class="text-secondary"></div>
+
+  <!-- Error Message -->
+<!--  <kod-alert class="mt-4 w-full" *ngIf="showAlert" [appearance]="'outline'" [showIcon]="false"-->
+<!--  [type]="alert.type" [@shake]="alert.type === 'error'">-->
+<!--  <div class="text-right">-->
+<!--      {{alert.message}}-->
+<!--  </div>-->
+<!--  </kod-alert>-->
+</div>
+<div mat-dialog-content>
+<!-- Form -->
+<form [formGroup]="todoFormGroup" class="w-120">
+          <!-- Todo Nickname -->
+          <div class="col-span-4 vstep:col-span-2">
+            <mat-form-field class="kod-mat-no-subscript w-full" [floatLabel]="'always'">
+                <mat-label>Task</mat-label>
+                <input [formControlName]="'name'" matInput>
+            </mat-form-field>
+        </div>
+        <!-- Todo Description -->
+        <div class="col-span-4 mt-3 vstep:col-span-2">
+          <mat-form-field class="kod-mat-no-subscript w-full" [floatLabel]="'always'">
+              <mat-label>Description</mat-label>
+              <input [formControlName]="'task'" matInput>
+          </mat-form-field>
+      </div>
+
+  <!-- Buttons -->
+  <div class="flex items-end gap-4 mt-6 justify-end mb-0.5 relative w-full col-span-4 vstep:col-span-2">
+
+    <!--Cancel Button-->
+    <button class="btn btn-outline outline-red-600 " [color]="warn" mat-flat-button type="button"
+        [mat-dialog-close]="true" >
+        <div class="flex justify-center items-center">
+            <div class="ml-1">Cancel</div>
+        </div>
+    </button>
+
+    <!--Add Button-->
+    <button class="btn" mat-flat-button type="button" (click)="submit()" [disabled]="buttonSubmit" [color]="'primary'">
+        <div class="flex justify-center items-center">
+            <div class="ml-1">Create {{_mydata.selection == 'subtask-create' ? 'Sub-Todo' : 'Todo'}}</div>
+        </div>
+    </button>
+
+  </div>
+
+</form>
+</div>
+</ng-template>
+
+
+
+
+
+<ng-template #edit>
+  <div class="w-full" mat-dialog-title>
+    <div class="text-lg"> Edit {{_mydata.selection == 'subtask-edit' ? 'Sub-Todo' : 'Todo'}}</div>
+    <div class="text-secondary"></div>
+
+    <!-- Error Message -->
+<!--    <kod-alert class="mt-4 w-full" *ngIf="showAlert" [appearance]="'outline'" [showIcon]="false"-->
+<!--    [type]="alert.type" [@shake]="alert.type === 'error'">-->
+<!--    <div class="text-right">-->
+<!--        {{alert.message}}-->
+<!--    </div>-->
+<!--    </kod-alert>-->
+  </div>
+  <div mat-dialog-content>
+  <!-- Form -->
+  <form [formGroup]="todoFormGroup" class="w-120">
+            <!-- Todo Nickname -->
+            <div class="col-span-4 vstep:col-span-2">
+              <mat-form-field class="kod-mat-no-subscript w-full" [floatLabel]="'always'">
+                  <mat-label>Name</mat-label>
+
+                  <input [formControlName]="'name'" matInput>
+              </mat-form-field>
+          </div>
+          <!-- Todo Description -->
+          <div class="col-span-4 mt-3 vstep:col-span-2">
+            <mat-form-field class="kod-mat-no-subscript w-full" [floatLabel]="'always'">
+                <mat-label>Task</mat-label>
+
+                <input [formControlName]="'task'" matInput>
+            </mat-form-field>
+        </div>
+
+    <!-- Buttons -->
+    <div class="flex items-end gap-4 mt-6 justify-end mb-0.5 relative w-full col-span-4 vstep:col-span-2">
+
+    <!--Cancel Button-->
+    <button class="btn btn-outline outline-red-600 " [color]="warn" mat-flat-button type="button"
+        [mat-dialog-close]="true" >
+        <div class="flex justify-center items-center">
+            <div class="ml-1">Cancel</div>
+        </div>
+    </button>
+
+
+      <!--Add Button-->
+      <button class="btn" mat-flat-button type="button" [disabled]="buttonSubmit" (click)="submit()" [color]="'primary'">
+          <div class="flex justify-center items-center">
+              <div class="ml-1">Update {{_mydata.selection == 'subtask-edit' ? 'Sub-Todo' : 'Todo'}}</div>
+          </div>
+      </button>
+
+    </div>
+  </form>
+  </div>
+  </ng-template>

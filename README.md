@@ -17,8 +17,9 @@ To run the project as intended, you will need to have Docker installed. If you p
 
 1) Git clone the repo :
 
+    ```mkdir TodoApp```
 
-    ```git clone git@github.com:kod3000/TodoApp---MEAN.git```
+    ```git -C ./TodoApp clone git@github.com:kod3000/TodoApp---MEAN.git```
   
 
 2) Change into the directory
@@ -29,14 +30,16 @@ To run the project as intended, you will need to have Docker installed. If you p
 3) Run Docker Compose :
 
 
-    ```docker compose -y  up```
+    ```docker compose -f docker-compose.yml up```
   
   
 ### To deploy the app via locally :
 
 1) Git clone the repo :
 
-      ```git clone git@github.com:kod3000/TodoApp---MEAN.git```
+    ```mkdir TodoApp```
+
+    ```git -C ./TodoApp clone git@github.com:kod3000/TodoApp---MEAN.git```
 
 2) Change into server directory
  
