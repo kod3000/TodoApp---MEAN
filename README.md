@@ -2,6 +2,8 @@
 
 A simple todo app made using mongo, express, angular 15, and nodejs.
 
+![todoapp](Client/private/screenshot.png "A simple todo app demo.") 
+
 ## Description 
 
 I was tasked with creating a simple app to demonstrate the knowledge base of a fullstack app. While this app serves its purpose as a demo, it lacks security and other necessary protocols that would be required for a live product. The app has a few basic features, such as adding a todo task and marking it as completed. The active tasks always appear at the top of the list, while completed tasks are sent to the bottom. The app's frontend is built using Angular and styled using Material for a clean and modern look. The backend is built with Express and uses a MongoDB instance for data storage. To facilitate deployment, the app can be containerized using Docker.
